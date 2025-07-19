@@ -1,0 +1,3 @@
+[submodule "external/plot_config_light"]
+	path = external/plot_config_light
+	url = git@github.com:108anup/plot_config_light.git
