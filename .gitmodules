@@ -10,3 +10,6 @@
 [submodule "experiments/ccas/genericCC"]
 	path = experiments/ccas/genericCC
 	url = git@github.com:venkatarun95/genericCC.git
+[submodule "frcc_kernel"]
+	path = frcc_kernel
+	url = git@github.com:108anup/frcc_kernel.git
