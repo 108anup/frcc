@@ -1,6 +1,6 @@
 [submodule "external/plot_config_light"]
-	path = external/plot_config_light
+	path = proofs/external/plot_config_light
 	url = git@github.com:108anup/plot_config_light.git
 [submodule "external/pyz3_utils"]
-	path = external/pyz3_utils
+	path = proofs/external/pyz3_utils
 	url = git@github.com:108anup/pyz3_utils.git

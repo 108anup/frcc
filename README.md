@@ -11,8 +11,12 @@ benchmarking, and proofs.
 
 ## Dependencies
 ```bash
+# Compiling and running
 conda create -yn frcc python=3 numpy matplotlib pandas sympy
-pip install z3-solver  # for verifying the proofs
+pip install z3-solver  # For verifying the proofs
+
+# Development
+sudo apt install bear  # For generating compile_commands.json for clangd
 ```
 
 ## Hello world experiment
