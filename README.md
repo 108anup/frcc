@@ -12,7 +12,7 @@ benchmarking, and proofs.
 ## Dependencies
 ```bash
 conda create -yn frcc python=3 numpy matplotlib pandas sympy
-pip install z3-solver
+pip install z3-solver  # for verifying the proofs
 ```
 
 ## Hello world experiment
