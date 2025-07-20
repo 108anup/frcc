@@ -161,7 +161,11 @@ Run these files as:
 
 ```bash
 cd proofs
+python analytical_ideal_link.py
 python phase_ideal_link.py
+python phase_jittery_link.py
+python fluid_parking_lot.py
+python fluid_different_rtt.py
 ```
 
 These will output figures in the `proofs/outputs/` directory.
