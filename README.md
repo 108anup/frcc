@@ -109,7 +109,8 @@ python parse_pcap.py -i ../data/logs/frcc-nsdi26/sweep_jitter --agg jitter_ms
 
 # Figure 1, 2, 26, 27
 ## The previous sweeps produce the logs for these figures.
-## See or run plot.sh to aggregate and copy the figures to `experiments/data/figs/frcc-nsdi26/evaluation/timeseries`.
+## See or run plot.sh to aggregate and copy the figures to
+## `experiments/data/figs/frcc-nsdi26/evaluation/timeseries`.
 ```
 
 ## Proofs
