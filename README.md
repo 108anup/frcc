@@ -62,7 +62,8 @@ cd experiments/cc_bench
 
 python sweep.py -t sweeps -o ../data/logs/frcc-nsdi26 -p
 # -p runs 20 experiments in parallel.
-# You can edit `sweep.py` based on the number of cores available. We use 20 cores when machine has 32 physical cores to ensure limited contention.
+# You can edit `sweep.py` based on the number of cores available.
+# We use 20 cores when machine has 32 physical cores to ensure limited contention.
 
 ./plot_all.sh
 # This will parse all the logs and copy all the relevant figures to `experiments/data/figs/frcc-nsdi26/evaluation`.
@@ -72,6 +73,8 @@ python sweep.py -t sweeps -o ../data/logs/frcc-nsdi26 -p
 2. Experiments for individual figures:
 
 ```bash
+cd experiments/cc_bench
+
 # Ideal link sweeps (Figure 19)
 
 ## Sweep flow count
@@ -109,7 +112,8 @@ python parse_pcap.py -i ../data/logs/frcc-nsdi26/sweep_jitter --agg jitter_ms
 
 # Figure 1, 2, 26, 27
 ## The previous sweeps produce the logs for these figures.
-## See or run plot.sh to aggregate and copy the figures to `experiments/data/figs/frcc-nsdi26/evaluation/timeseries`.
+## See or run plot.sh to aggregate and copy the figures to
+## `experiments/data/figs/frcc-nsdi26/evaluation/timeseries`.
 ```
 
 ## Proofs
