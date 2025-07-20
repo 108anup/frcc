@@ -10,7 +10,10 @@ benchmarking, and proofs.
 # Getting started
 
 ## Dependencies
-
+```bash
+conda create -yn frcc python=3 numpy matplotlib pandas sympy
+pip install z3-solver
+```
 
 ## Hello world experiment
 
