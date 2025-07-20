@@ -15,7 +15,6 @@ git submodule update --init --recursive
 
 ## Dependencies
 
-### Compiling and running
 ```bash
 conda create -yn frcc python=3
 conda activate frcc
@@ -23,10 +22,16 @@ conda install numpy matplotlib pandas sympy
 pip install z3-solver  # For verifying the proofs
 ```
 
-### Development
+## Compiling and installing FRCC's kernel module
 ```bash
-sudo apt install bear  # For generating compile_commands.json for clangd
+cd frcc_kernel
+make
+sudo insmod tcp_frcc.ko
 ```
+
+## Setting up test bench
+1. Refer to `experiments/cc_bench/setup.sh` for installing mahimahi, iperf3, etc. used for running experiments.
+2. Refer to `experiments/cc_bench/boot.sh` for setting up kernel parameters (e.g., TCP buffers). This needs to be run after every boot.
 
 ## Hello world experiment
 Run FRCC on a simple dumbbell topology to check if all the dependencies are correctly installed.
@@ -43,4 +48,21 @@ python parse_pcap.py -i ../data/logs/frcc-nsdi26/debug  # Plot throughput and rt
 ## Empirical experiments
 
 ## Proofs
+`proofs/` contains code to generate the state update equations, verify the lemmas, and plot the phase portraits of FRCC.
 
+1. Ideal link, N flows, equal RTprop, no probe collisions.
+`proofs/analytical_ideal_link.py` derives and prints the state transition equations used in Appendix B.3.
+2. Jittery link, **2 flows**, equal RTprop, no probe collisions.
+`proofs/phase_jittery_link.py` uses Z3 to prove the lemmas describing the state trajectories.
+3. Ideal link, **2 flows**, equal RTprop, **with collisions**.
+`proofs/phase_ideal_link.py` derives state update equations for different types of probe collisions and uses this to plot the phase portrait (Figure 14).
+4. Fluid model, different RTprops and multiple bottlenecks.
+`proofs/fluid_different_rtt.py` and `proofs/fluid_parking_lot.py` derive, print and plot the steady-state fixed-point of FRCC (Figure 18).
+
+Run these files as:
+```bash
+cd proofs
+python phase_ideal_link.py
+```
+
+These will output figures in the `proofs/outputs/` directory.
