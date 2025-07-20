@@ -7,7 +7,35 @@ This repository accompanies the paper: "Towards Fair and Robust Congestion
 Control (to appear in NSDI 26)", and includes FRCC's kernel implementation,
 benchmarking, and proofs.
 
-# Getting started
+## Structure (most relevant files/directories)
+
+```
+.
+├── frcc_kernel # (kernel module)
+│   ├── Makefile
+│   ├── set_frcc_params.py # (changing parameters and features at runtime)
+│   ├── tcp_frcc.c
+├── experiments
+│   ├── ccas # (implementations of other CCAs, e.g., Copa)
+│   │   └── genericCC
+│   ├── cc_bench # (benchmarking framework)
+│   │   ├── sweep.py # (main entry point)
+│   │   └── parse_pcap.py
+│   │       # (parse and plot pcap traces logged by tcpdump for the experiment runs)
+│   ├── data # (organization of logs and figures)
+│   │   ├── figs
+│   │   └── logs
+│   └── mahimahi-traces # (traces for emulation)
+├── proofs # (proofs and analysis of FRCC's performance properties)
+│   ├── analytical_ideal_link.py
+│   ├── fluid_different_rtt.py
+│   ├── fluid_parking_lot.py
+│   ├── phase_ideal_link.py
+│   └── phase_jittery_link.py
+└── README.md
+```
+
+## Getting started
 
 Ensure that you cloned all the submodules.
 
@@ -15,7 +43,7 @@ Ensure that you cloned all the submodules.
 git submodule update --init --recursive
 ```
 
-## Dependencies
+### Dependencies
 
 ```bash
 conda create -yn frcc python=3
@@ -24,7 +52,7 @@ conda install numpy matplotlib pandas sympy
 pip install z3-solver  # For verifying the proofs
 ```
 
-## Compiling and installing FRCC's kernel module
+### Compiling and installing FRCC's kernel module
 
 ```bash
 cd frcc_kernel
@@ -32,7 +60,7 @@ make
 sudo insmod tcp_frcc.ko
 ```
 
-## Setting up test bench
+### Setting up test bench
 
 1. Refer to `experiments/cc_bench/setup.sh` for installing mahimahi, iperf3, etc. used for running experiments.
 2. Refer to `experiments/cc_bench/boot.sh` for setting up kernel parameters (e.g., TCP buffers). This needs to be run after every boot.
@@ -49,9 +77,9 @@ python parse_pcap.py -i ../data/logs/frcc-nsdi26/debug  # Plot throughput and rt
 # Output plots will be in experiments/data/figs/frcc-nsdi26/debug
 ```
 
-# Reproducing results
+## Reproducing results
 
-## Empirical experiments
+### Empirical experiments
 
 Note, following instructions do not produce Figure 22 (parking lot experiment) and runs for BBRv3, as we have separate VMs for these experiments.
 
@@ -116,7 +144,7 @@ python parse_pcap.py -i ../data/logs/frcc-nsdi26/sweep_jitter --agg jitter_ms
 ## `experiments/data/figs/frcc-nsdi26/evaluation/timeseries`.
 ```
 
-## Proofs
+### Proofs
 
 `proofs/` contains code to generate the state update equations, verify the lemmas, and plot the phase portraits of FRCC.
 
