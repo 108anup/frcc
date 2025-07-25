@@ -1,15 +1,15 @@
 [submodule "external/plot_config_light"]
 	path = proofs/external/plot_config_light
-	url = https://github.com:108anup/plot_config_light.git
+	url = https://github.com/108anup/plot_config_light.git
 [submodule "external/pyz3_utils"]
 	path = proofs/external/pyz3_utils
-	url = https://github.com:108anup/pyz3_utils.git
+	url = https://github.com/108anup/pyz3_utils.git
 [submodule "experiments/cc_bench"]
 	path = experiments/cc_bench
-	url = https://github.com:108anup/cc_bench.git
+	url = https://github.com/108anup/cc_bench.git
 [submodule "experiments/ccas/genericCC"]
 	path = experiments/ccas/genericCC
-	url = https://github.com:venkatarun95/genericCC.git
+	url = https://github.com/venkatarun95/genericCC.git
 [submodule "frcc_kernel"]
 	path = frcc_kernel
-	url = https://github.com:108anup/frcc_kernel.git
+	url = https://github.com/108anup/frcc_kernel.git
