@@ -40,7 +40,11 @@ benchmarking, and proofs.
 Ensure that you cloned all the submodules.
 
 ```bash
-sudo apt install build-essential git openssh-server
+sudo apt update
+sudo apt install -y build-essential git openssh-server
+
+mkdir -p $HOME/Projects
+cd $HOME/Projects
 git clone https://github.com/108anup/frcc.git
 git submodule update --init --recursive
 ```
@@ -52,7 +56,7 @@ We manage dependencies using conda.
 ```bash
 conda create -yn frcc python=3
 conda activate frcc
-conda install numpy matplotlib pandas sympy
+conda install -y numpy matplotlib pandas sympy pip
 pip install z3-solver  # For verifying the proofs
 ```
 
