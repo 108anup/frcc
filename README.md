@@ -64,7 +64,7 @@ pip install z3-solver  # For verifying the proofs
 
 ```bash
 cd frcc_kernel
-make
+make -j
 sudo insmod tcp_frcc.ko
 ```
 
