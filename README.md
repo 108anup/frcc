@@ -251,4 +251,12 @@ setting ALL_CCAS to only include Copa in `sweep.py`.
 
     ```bash
     python sweep.py -t sweep_jitter_bw -o ../data/logs/frcc-nsdi26/ -p
+    python sweep.py -t sweep_jitter -o ../data/logs/frcc-nsdi26/ -p
+    ```
+
+2. Plotting sometimes fails for Copa in the convergence experiment. Re-running
+   only Copa fixes issue.
+
+    ```bash
+    python sweep.py -t staggered -o ../data/logs/frcc-nsdi26/ -p
     ```
