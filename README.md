@@ -37,7 +37,8 @@ benchmarking, and proofs.
 
 ## Getting started
 
-Ensure that you cloned all the submodules.
+Ensure that you cloned all the submodules. After cloning, you can either follow
+instructions here or refer to `setup.sh`.
 
 ```bash
 sudo apt update
@@ -72,7 +73,9 @@ sudo insmod tcp_frcc.ko
 ### Setting up test bench
 
 1. Refer to `experiments/cc_bench/setup.sh` for installing mahimahi, iperf3,
-   etc. used for running experiments.
+   etc. used for running experiments. Note, you may want to deactivate conda
+environment, as the environment's protobuf may interfere with mahimahi and
+genericCC protobuf. Reactivate after running the script.
 2. Refer to `experiments/cc_bench/boot.sh` for setting up kernel parameters
    (e.g., TCP buffers). This needs to be run after every boot.
 
