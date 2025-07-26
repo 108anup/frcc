@@ -25,7 +25,8 @@ set -euo pipefail
   # Install dependencies
   conda create -yn frcc python=3
   conda activate frcc
-  conda install -y numpy matplotlib pandas sympy pip
+  conda install -y numpy matplotlib pandas sympy pip ipython
+  conda install ipdb -c conda-forge
   pip install z3-solver  # For verifying the proofs
 
   # Install FRCC kernel module
