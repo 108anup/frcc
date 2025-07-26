@@ -34,9 +34,15 @@ set -euo pipefail
   sudo insmod tcp_frcc.ko
 
   # Setup test bench
+  # conda's protobuf installation can interfere with
+  # mahimahi's required protobuf
+  conda deactivate
+  conda deactivate
   cd $BENCH
   ./setup.sh
   ./boot.sh
+  conda activate frcc
+  conda activate frcc
 
 
 
