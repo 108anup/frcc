@@ -119,7 +119,7 @@ processes.
     ```
 
 3. Check if parallel experiments run fine. Same as previous but executes up to
-   N_PROCESSES=10 (in `experiments/cc_bench/sweep.py`) runs in parallel by
+   N_PROCESSES=8 (in `experiments/cc_bench/sweep.py`) runs in parallel by
 default. Edit `sweep.py` to change the number of parallel runs based on the
 number of physical cores. For reference, we set 10 cores here when our machine
 has 16 physical cores to ensure limited contention.
@@ -144,9 +144,9 @@ working fine. We typically leave this running overnight.
     cd experiments/cc_bench
 
     python sweep.py -t sweeps -o ../data/logs/frcc-nsdi26 -p
-    # -p executes runs in parallel.
+    # -p executes N_PROCESSES=8 runs in parallel.
     # You can edit `sweep.py` to change the number of parallel runs based on
-    # the number of cores available. For reference, we use 10 cores when machine
+    # the number of cores available. For reference, we use 8 cores when machine
     # has 16 physical cores to ensure limited contention.
 
     ./plot_all.sh
@@ -160,8 +160,8 @@ working fine. We typically leave this running overnight.
     Note, a single run of a congestion control algorithm (CCA) on a single
     scenario (e.g., choice of link capacity, number of flows, etc.) takes 5
     mins. An experiment like sweep_flows runs 5 CCAs and varies flow count from
-    1 to 8, for a total of 40 runs. When executing 10 runs in parallel, this
-    experiment would take about 20 mins.
+    1 to 8, for a total of 40 runs. When executing 8 runs in parallel, this
+    experiment would take about 25 mins.
 
     ```bash
     cd experiments/cc_bench
