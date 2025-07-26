@@ -8,11 +8,12 @@ Control (to appear in NSDI 26)", and includes FRCC's kernel implementation,
 benchmarking, and proofs.
 
 This artifact is split across 3 repositories:
-1. https://github.com/108anup/frcc/tree/main. This includes the other two
+
+1. <https://github.com/108anup/frcc/tree/main>. This includes the other two
    repositories as submodules and has proofs about FRCC's performance.
-2. https://github.com/108anup/frcc_kernel/tree/main. This has the code for
+2. <https://github.com/108anup/frcc_kernel/tree/main>. This has the code for
    FRCC's kernel module.
-3. https://github.com/108anup/cc_bench/tree/main. This has scripts for running
+3. <https://github.com/108anup/cc_bench/tree/main>. This has scripts for running
    and plotting experiments.
 
 ## Structure (most relevant files/directories)
