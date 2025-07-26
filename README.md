@@ -78,6 +78,10 @@ sudo insmod tcp_frcc.ko
 
 ## Hello world experiment
 
+If you find yourself killing an experiment in between (e.g., Ctrl+C on a script
+run), run `experiments/cc_bench/clean_processes.sh` to kill all the test bench
+processes.
+
 1. Run FRCC on a simple dumbbell topology to check if all the dependencies are
    correctly installed. Runs for roughly a minute.
 
@@ -103,9 +107,10 @@ sudo insmod tcp_frcc.ko
     ```
 
 3. Check if parallel experiments run fine. Same as previous but executes up to
-   20 runs in parallel by default. Edit `sweep.py` to change the number of
-parallel runs based on the number of physical cores. For reference, we set 20
-cores here when our machine has 32 physical cores to ensure limited contention.
+   N_PROCESSES=10 (in `experiments/cc_bench/sweep.py`) runs in parallel by
+default. Edit `sweep.py` to change the number of parallel runs based on the
+number of physical cores. For reference, we set 10 cores here when our machine
+has 16 physical cores to ensure limited contention.
 
     ```bash
     python sweep.py -t debug_all -o ../data/logs/frcc-nsdi26/ -p
@@ -127,10 +132,10 @@ working fine. We typically leave this running overnight.
     cd experiments/cc_bench
 
     python sweep.py -t sweeps -o ../data/logs/frcc-nsdi26 -p
-    # -p executes 20 runs in parallel.
+    # -p executes runs in parallel.
     # You can edit `sweep.py` to change the number of parallel runs based on
-    # the number of cores available. For reference, we use 20 cores when machine
-    # has 32 physical cores to ensure limited contention.
+    # the number of cores available. For reference, we use 10 cores when machine
+    # has 16 physical cores to ensure limited contention.
 
     ./plot_all.sh
     # This will parse all the logs and copy all the relevant figures to
@@ -143,8 +148,8 @@ working fine. We typically leave this running overnight.
     Note, a single run of a congestion control algorithm (CCA) on a single
     scenario (e.g., choice of link capacity, number of flows, etc.) takes 5
     mins. An experiment like sweep_flows runs 5 CCAs and varies flow count from
-    1 to 8, for a total of 40 runs. When executing 20 runs in parallel, this
-    experiment would take about 10 mins.
+    1 to 8, for a total of 40 runs. When executing 10 runs in parallel, this
+    experiment would take about 20 mins.
 
     ```bash
     cd experiments/cc_bench
@@ -152,35 +157,35 @@ working fine. We typically leave this running overnight.
     # Ideal link sweeps (Figure 19)
 
     ## Sweep flow count
-    python sweep.py -t sweep_flows -o ../data/logs/frcc-nsdi26/sweep_flows -p
+    python sweep.py -t sweep_flows -o ../data/logs/frcc-nsdi26/ -p
     python parse_pcap.py -i ../data/logs/frcc-nsdi26/n_flows --agg n_flows
     ## Output figures: `experiments/data/figs/frcc-nsdi26/sweep_flows/{jfi, rtt}.pdf`
 
     # Sweep bandwidth
-    python sweep.py -t sweep_bw -o ../data/logs/frcc-nsdi26/sweep_bw -p
+    python sweep.py -t sweep_bw -o ../data/logs/frcc-nsdi26/ -p
     python parse_pcap.py -i ../data/logs/frcc-nsdi26/sweep_bw --agg bw_mbps
     ## Output figures: `experiments/data/figs/frcc-nsdi26/sweep_bw/{jfi, rtt}.pdf`
 
     # Sweep RTprop
-    python sweep.py -t sweep_rtprop -o ../data/logs/frcc-nsdi26/sweep_rtprop -p
+    python sweep.py -t sweep_rtprop -o ../data/logs/frcc-nsdi26/ -p
     python parse_pcap.py -i ../data/logs/frcc-nsdi26/sweep_rtprop --agg rtprop_ms
     ## Output figures: `experiments/data/figs/frcc-nsdi26/sweep_rtprop/{jfi, rtt}.pdf`
 
     # Sweeps with jitter. Figure 20 (left and right respectively)
-    python sweep.py -t different_rtt_sweep_bw -o ../data/logs/frcc-nsdi26/different_rtt_sweep_bw -p
+    python sweep.py -t different_rtt_sweep_bw -o ../data/logs/frcc-nsdi26/ -p
     python parse_pcap.py -i ../data/logs/frcc-nsdi26/different_rtt_sweep_bw --agg bw_mbps
     ## Output figure (left): `experiments/data/figs/frcc-nsdi26/different_rtt_sweep_bw/xput_ratio.pdf`
 
-    python sweep.py -t different_rtt -o ../data/logs/frcc-nsdi26/different_rtt -p
+    python sweep.py -t different_rtt -o ../data/logs/frcc-nsdi26/ -p
     python parse_pcap.py -i ../data/logs/frcc-nsdi26/different_rtt --agg rtprop_ratio
     ## Output figure (right): `experiments/data/figs/frcc-nsdi26/different_rtt/xput_ratio.pdf`
 
     # Sweeps with jitter. Figure 21 (left and right respectively)
-    python sweep.py -t sweep_jitter_bw -o ../data/logs/frcc-nsdi26/sweep_jitter_bw -p
+    python sweep.py -t sweep_jitter_bw -o ../data/logs/frcc-nsdi26/ -p
     python parse_pcap.py -i ../data/logs/frcc-nsdi26/sweep_jitter_bw --agg bw_mbps
     ## Output figure (left): `experiments/data/figs/frcc-nsdi26/sweep_jitter_bw/xput_ratio.pdf`
 
-    python sweep.py -t sweep_jitter -o ../data/logs/frcc-nsdi26/sweep_jitter -p
+    python sweep.py -t sweep_jitter -o ../data/logs/frcc-nsdi26/ -p
     python parse_pcap.py -i ../data/logs/frcc-nsdi26/sweep_jitter --agg jitter_ms
     ## Output figure (right): `experiments/data/figs/frcc-nsdi26/sweep_jitter/xput_ratio.pdf`
 
