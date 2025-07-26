@@ -197,8 +197,8 @@ working fine. We typically leave this running overnight.
     python parse_pcap.py -i ../data/logs/frcc-nsdi26/sweep_jitter_bw --agg bw_mbps
     ## Output figure (left): `experiments/data/figs/frcc-nsdi26/sweep_jitter_bw/xput_ratio.pdf`
 
-    python sweep.py -t sweep_jitter -o ../data/logs/frcc-nsdi26/ -p
-    python parse_pcap.py -i ../data/logs/frcc-nsdi26/sweep_jitter --agg jitter_ms
+    python sweep.py -t jitter -o ../data/logs/frcc-nsdi26/ -p
+    python parse_pcap.py -i ../data/logs/frcc-nsdi26/jitter --agg jitter_ms
     ## Output figure (right): `experiments/data/figs/frcc-nsdi26/sweep_jitter/xput_ratio.pdf`
 
     # Figure 1, 2, 26, 27
@@ -242,6 +242,12 @@ These will output figures in the `proofs/outputs/` directory.
 
 ## Known issues
 
+All these issues are with running Copa (genericcc_markovian in genericCC). If
+this gives too much trouble, we recommend commenting out Copa from ALL_CCAS in
+`experiments/cc_bench/sweep.py` and running the experiments without Copa. You
+would also want to edit `experiments/cc_bench/plot_all.sh` to remove references
+to Copa (genericcc_markovian).
+
 1. We have noticed that on some machines, there are failures in running Copa
    with jitter. This typically occurs for the below experiment. Re-running Copa
 experiments with a lower degree of parallelism seems to resolve the issue. To
@@ -251,7 +257,7 @@ setting ALL_CCAS to only include Copa in `sweep.py`.
 
     ```bash
     python sweep.py -t sweep_jitter_bw -o ../data/logs/frcc-nsdi26/ -p
-    python sweep.py -t sweep_jitter -o ../data/logs/frcc-nsdi26/ -p
+    python sweep.py -t jitter -o ../data/logs/frcc-nsdi26/ -p
     ```
 
 2. Plotting sometimes fails for Copa in the convergence experiment. Re-running
