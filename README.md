@@ -196,6 +196,13 @@ working fine. We typically leave this running overnight.
     ## The previous sweeps produce the logs for these figures.
     ## See or run plot.sh to aggregate and copy the figures to
     ## `experiments/data/figs/frcc-nsdi26/evaluation/timeseries`.
+
+    # Convergence (Figure 23)
+    ## This runs for 12 mins per CCA.
+    python sweep.py -t staggered -o ../data/logs/frcc-nsdi26/ -p
+    python parse_pcap.py -i ../data/logs/frcc-nsdi26/staggered
+    ## Output figure:
+    `experiments/data/figs/frcc-nsdi26/staggered/bw_ppms[8]-ow_delay_ms[25]-n_flows[8]/bw_ppms[8]-ow_delay_ms[25]-n_flows[8]-buf_size_bdp[100]-cca[frcc]/tcpdump_throughput.pdf
     ```
 
 ### Proofs
