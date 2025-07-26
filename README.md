@@ -121,7 +121,7 @@ processes.
 3. Check if parallel experiments run fine. Same as previous but executes up to
    N_PROCESSES=8 (in `experiments/cc_bench/sweep.py`) runs in parallel by
 default. Edit `sweep.py` to change the number of parallel runs based on the
-number of physical cores. For reference, we set 10 cores here when our machine
+number of physical cores. For reference, we set 8 cores here when our machine
 has 16 physical cores to ensure limited contention.
 
     ```bash
