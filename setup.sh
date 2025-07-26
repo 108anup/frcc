@@ -35,16 +35,13 @@ set -euo pipefail
 
   # Setup test bench
   # conda's protobuf installation can interfere with
-  # mahimahi's required protobuf
-  conda deactivate
-  conda deactivate
+  # genericCC and mahimahi required protobuf
   cd $BENCH
+  conda deactivate
   ./setup.sh
   ./boot.sh
   conda activate frcc
-  conda activate frcc
-
-
+  cd $REPO
 
 exit 0
 }
