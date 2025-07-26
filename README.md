@@ -239,3 +239,16 @@ python fluid_different_rtt.py
 ```
 
 These will output figures in the `proofs/outputs/` directory.
+
+## Known issues
+
+1. We have noticed that on some machines, there are failures in running Copa
+   with jitter. This typically occurs for the below experiment. Re-running Copa
+experiments with a lower degree of parallelism seems to resolve the issue. To
+do this, re-run the experiment after reducing the number of parallel runs
+(N_PROCESSES) in `sweep.py` (e.g., setting N_PROCESSES=4 instead of 8) and
+setting ALL_CCAS to only include Copa in `sweep.py`.
+
+    ```bash
+    python sweep.py -t sweep_jitter_bw -o ../data/logs/frcc-nsdi26/ -p
+    ```
